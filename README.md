@@ -22,5 +22,5 @@ You want your production site updated whenever you commit to master, but your gi
 It sounds nicer than git-slave-update. http://programmers.stackexchange.com/questions/108035/master-slave-politically-correct-version
 
 # Work In Progress
-[ ] Update submodules
-[ ] Redirect if the secret isn't provided
+- [ ] Update submodules
+- [ ] Redirect if the secret isn't provided
