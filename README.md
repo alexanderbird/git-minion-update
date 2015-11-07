@@ -2,9 +2,7 @@
 For pull-only git repos that should be regularly updated from the master git repo: a PHP script that will fetch-reset-clean the local repo when requested. 
 
 ## Simple Continuous Deployment
-You want your production site updated whenever you commit to master, but your git repo doesn't have shell access to your production code (either the repo is on another machine, or your repo user account doesn't have access to the production directory) 
-
-See [this Stack Overflow question](http://stackoverflow.com/questions/9589814/git-force-a-pull-to-overwrite-everything-on-every-pull) for the key idea
+You want your production site updated whenever you commit to master, but your git repo doesn't have shell access to your production code (either the repo is on another machine, or your repo user account doesn't have access to the production directory). See [this Stack Overflow question](http://stackoverflow.com/questions/9589814/git-force-a-pull-to-overwrite-everything-on-every-pull). 
 
 ## The Main Idea
 * Your site is hosted in git
@@ -22,3 +20,7 @@ See [this Stack Overflow question](http://stackoverflow.com/questions/9589814/gi
 
 ## "minion"...?
 It sounds nicer than git-slave-update. http://programmers.stackexchange.com/questions/108035/master-slave-politically-correct-version
+
+# Work In Progress
+[ ] Update submodules
+[ ] Redirect if the secret isn't provided
