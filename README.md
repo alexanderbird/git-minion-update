@@ -26,8 +26,8 @@ get_latest_submodules = false ; runs `git submodule update`
   ; default to true
 ```
 
-### 4. Add git post-commit hook to your repo
-`wget http://your-domain.com/git-minion-update/?secret=your-secret`
+### 4. Add git post-update hook to your repo
+`curl http://your-domain.com/git-minion-update/?secret=your-secret`
 
 ## Overview
 ### Simple Continuous Deployment
