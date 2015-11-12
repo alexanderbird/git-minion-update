@@ -1,14 +1,35 @@
 <?php
 
-$branch = "master";
+header('Content-type: text/plain');
 
-if(isset($_GET['secret']) && $_GET['secret'] == '<add secret string here>') {
-  echo "Updating from " . $branch . " branch\n";
-  echo shell_exec("git fetch origin " . $branch); 
+$config_path = "../.git-minion-update.ini";
+
+$config = array(
+  branch => 'master',
+  secret => 'notverysecret',
+  redirect_to => '..'
+);
+
+if(file_exists($config_path)) {
+  $user_config = parse_ini_file($config_path);
+  if($user_config) {
+    $config = array_merge($config, $user_config);
+  } else {
+    echo "Warning: parse error in .git-minion-update.ini\nFalling back on default configuration\n\n";
+  }
+}
+
+if(isset($_GET['secret']) && $_GET['secret'] == $config['secret']) {
+  echo "Updating from " . $config['branch'] . " branch\n";
+  echo shell_exec("git fetch origin " . $config['branch']); 
+  echo "\n";
   echo shell_exec("git reset --hard FETCH_HEAD");
+  echo "\n";
   echo shell_exec("git clean -df");
+  echo "\n";
 } else {
- // TODO: redirect to root
+  // back out to the main page
+  header('Location: ' . $config['redirect_to']);
 }
 
 ?>
