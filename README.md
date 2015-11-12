@@ -4,7 +4,7 @@ For pull-only git repos that should be regularly updated from the master git rep
 ## Quick Setup
 ### 1. Add to your project
 ```bash
-git submodule add git@github.com:alexanderbird/git-minion-update.git
+git submodule add https://github.com/alexanderbird/git-minion-update.git 
 git add -A
 git commit -m "Added git-minion-update script"
 ```
