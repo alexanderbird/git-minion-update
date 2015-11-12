@@ -23,7 +23,7 @@ secret = 'something-private' ; required to run the script
 redirect_to = '../will-redirect-here-if-secret-not-provided.html' ; default '..' which is the site root, relative to git-minion-update.ini 
 ```
 
-### 4. Add git post-commit hook to update
+### 4. Add git post-commit hook to your repo
 `wget http://your-domain.com/git-minion-update/?secret=your-secret`
 
 ## Overview
