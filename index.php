@@ -7,7 +7,8 @@ $config_path = "../.git-minion-update.ini";
 $config = array(
   branch => 'master',
   secret => 'notverysecret',
-  redirect_to => '..'
+  redirect_to => '..',
+  get_latest_submodules => true
 );
 
 if(file_exists($config_path)) {
@@ -30,7 +31,11 @@ if(isset($_GET['secret']) && $_GET['secret'] == $config['secret']) {
   echo "\n";
   echo shell_exec("git clean -df");
   echo "\n";
-  echo shell_exec("git submodule update");
+  if($config['get_latest_submodules']) {
+    echo shell_exec("git submodule foreach git pull origin master");
+  } else {
+    echo shell_exec("git submodule update");
+  }
 } else {
   // back out to the main page
   header('Location: ' . $config['redirect_to']);
