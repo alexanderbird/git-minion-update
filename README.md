@@ -20,7 +20,7 @@ git submodule update --init --recursive
 ```ini
 branch = 'name-of-branch-to-checkout' ; default 'master'
 secret = 'something-private' ; required to run the script
-redirect_to = '../will-redirect-here-if-secret-not-provided.html' ; default '..' which is the site root, relative to git-minion-update.ini 
+redirect_to = '../will-redirect-here-if-secret-not-provided.html' ; default '..' which is the site root, relative to git-minion-update/index.php
 ```
 
 ### 4. Add git post-commit hook to your repo
