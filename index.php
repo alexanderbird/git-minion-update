@@ -20,6 +20,9 @@ if(file_exists($config_path)) {
 }
 
 if(isset($_GET['secret']) && $_GET['secret'] == $config['secret']) {
+  // work from the project root
+  chdir("..");
+  // update the git repo
   echo "Updating from " . $config['branch'] . " branch\n";
   echo shell_exec("git fetch origin " . $config['branch']); 
   echo "\n";
