@@ -3,18 +3,28 @@ For pull-only git repos that should be regularly updated from the master git rep
 
 ## Quick Setup
 ### 1. Add to your project
-```
+```bash
 git submodule add git@github.com:alexanderbird/git-minion-update.git
 git add -A
 git commit -m "Added git-minion-update script"
 ```
 
 ### 2. Checkout in production
-```
+```bash
 git submodule update --init --recursive
 ```
 
-### 3. Configure - see below
+### 3. Configure
+1. Add a `.git-minion-update.ini` file to the project root (or more precisely, one directory above the git-minion-update directory)
+2. The following values can be configured
+```ini
+branch = 'name-of-branch-to-checkout' ; default 'master'
+secret = 'something-private' ; required to run the script
+redirect_to = '../will-redirect-here-if-secret-not-provided.html' ; default '..' which is the site root, relative to git-minion-update.ini 
+```
+
+### 4. Add git post-commit hook to update
+`wget http://your-domain.com/git-minion-update/?secret=your-secret`
 
 ## Overview
 ### Simple Continuous Deployment
@@ -25,15 +35,5 @@ You want your production site updated whenever you commit to master, but your gi
 * When a GET request is made to some secret url in production, your production checkout is updated. (That's where this script comes in.)
 * In your git repo, a post-commit hook is configured to make a call to that secret url
 
-### Configuration
-1. Configure index.php by 
-  1. Changing the branch name to follow (if you want to follow something other than master)
-  2. Set a secret string so only those who know it can run the script. Make it long and unguessable without spaces or special characters. 
-2. Add a post-commit hook to your main repo that makes a request to http://your-domain.com/git-minion-update?secret=yourSecretString
-
 ## "minion"...?
 It sounds nicer than git-slave-update. http://programmers.stackexchange.com/questions/108035/master-slave-politically-correct-version
-
-# Work In Progress
-- [ ] Update submodules
-- [ ] Redirect if the secret isn't provided
