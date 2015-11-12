@@ -39,4 +39,4 @@ You want your production site updated whenever you commit to master, but your gi
 * In your git repo, a post-commit hook is configured to make a call to that secret url
 
 ## "minion"...?
-It sounds nicer than git-slave-update. http://programmers.stackexchange.com/questions/108035/master-slave-politically-correct-version
+This script is used to update a git repo that is a slave to the main repo. But minion sounds nicer than slave, so I'm going with that. So the minion repo is one that should be pull-only, and should replicate the master after each commit. 
