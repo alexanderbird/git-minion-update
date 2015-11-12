@@ -30,6 +30,7 @@ if(isset($_GET['secret']) && $_GET['secret'] == $config['secret']) {
   echo "\n";
   echo shell_exec("git clean -df");
   echo "\n";
+  echo shell_exec("git submodule update");
 } else {
   // back out to the main page
   header('Location: ' . $config['redirect_to']);
