@@ -31,6 +31,9 @@ if(isset($_GET['secret']) && $_GET['secret'] == $config['secret']) {
   echo "\n";
   echo shell_exec("git clean -df");
   echo "\n";
+  // get new submodules, if they've been added in the most recent commit
+  echo shell_exec("git submodule update --init --recursive");
+  echo "\n";
   if($config['get_latest_submodules']) {
     echo shell_exec("git submodule foreach git pull origin master");
   } else {
