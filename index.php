@@ -8,7 +8,8 @@ $config = array(
   branch => 'master',
   secret => 'notverysecret',
   redirect_to => '..',
-  get_latest_submodules => true
+  get_latest_submodules => true,
+  project_root_directory => '..'
 );
 
 if(file_exists($config_path)) {
@@ -22,7 +23,7 @@ if(file_exists($config_path)) {
 
 if(isset($_GET['secret']) && $_GET['secret'] == $config['secret']) {
   // work from the project root
-  chdir("..");
+  chdir($config['project_root_directory']);
   // update the git repo
   echo "Updating from " . $config['branch'] . " branch\n";
   echo shell_exec("git fetch origin " . $config['branch']); 
