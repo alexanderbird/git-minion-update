@@ -24,7 +24,7 @@ redirect_to = '../will-redirect-here-if-secret-not-provided.html' ; default '..'
 get_latest_submodules = false ; runs `git submodule update`
   ; when true, runs `git submodule foreach git pull origin master`
   ; default to true
-project_root_directory = '../path/to/repo' ; default to '..'
+path = '/relative/to/project/root' ; default to '/'
   ; this is from where the `git pull` will be executed
 ```
 
