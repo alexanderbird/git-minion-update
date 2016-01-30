@@ -5,16 +5,12 @@ For pull-only git repos that should be regularly updated from the master git rep
 ### 1. Add to your project
 ```bash
 git submodule add https://github.com/alexanderbird/git-minion-update.git 
+# You may want to complete step 2 before commiting 
 git add -A
 git commit -m "Added git-minion-update script"
 ```
 
-### 2. Checkout in production
-```bash
-git submodule update --init --recursive
-```
-
-### 3. Configure
+### 2. Configure
 1. Add a `.git-minion-update.ini` file to the project root (or more precisely, one directory above the git-minion-update directory)
 2. The following values can be configured
 ```ini
@@ -26,6 +22,11 @@ get_latest_submodules = false ; runs `git submodule update`
   ; default to true
 path = '/relative/to/project/root' ; default to '/'
   ; this is from where the `git pull` will be executed
+```
+
+### 3. Checkout in production
+```bash
+git submodule update --init --recursive
 ```
 
 ### 4. Add git post-update hook to your repo
