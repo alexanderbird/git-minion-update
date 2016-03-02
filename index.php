@@ -26,6 +26,8 @@ if(isset($_GET['secret'])) {
   $secret = $_GET['secret'];
 } elseif(isset($_POST['secret'])) {
   $secret = $_POST['secret'];
+} elseif($argc > 1) {
+  $secret = $argv[1];
 }
 
 if($secret == $config['secret']) {
