@@ -37,7 +37,7 @@ if($secret == $config['secret']) {
   }
   // update the git repo
   echo "Updating from " . $config['branch'] . " branch\n";
-  echo shell_exec("git fetch origin " . $config['branch'] . "2>&1 1> /dev/null");
+  echo shell_exec("git fetch origin " . $config['branch'] . " 2>&1 1> /dev/null");
   echo "\n";
   echo shell_exec("git reset --hard FETCH_HEAD 2>&1 1> /dev/null");
   echo "\n";
