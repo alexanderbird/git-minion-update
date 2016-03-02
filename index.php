@@ -5,11 +5,11 @@ header('Content-type: text/plain');
 $config_path = "../.git-minion-update.ini";
 
 $config = array(
-  branch => 'master',
-  secret => 'notverysecret',
-  redirect_to => '..',
-  get_latest_submodules => true,
-  path => '/'
+  'branch' => 'master',
+  'secret' => 'notverysecret',
+  'redirect_to' => '..',
+  'get_latest_submodules' => true,
+  'path' => '/'
 );
 
 if(file_exists($config_path)) {
