@@ -37,19 +37,19 @@ if($secret == $config['secret']) {
   }
   // update the git repo
   echo "Updating from " . $config['branch'] . " branch\n";
-  echo shell_exec("git fetch origin " . $config['branch']); 
+  echo shell_exec("git fetch origin " . $config['branch'] . "2>&1 1> /dev/null");
   echo "\n";
-  echo shell_exec("git reset --hard FETCH_HEAD");
+  echo shell_exec("git reset --hard FETCH_HEAD 2>&1 1> /dev/null");
   echo "\n";
-  echo shell_exec("git clean -df");
+  echo shell_exec("git clean -df 2>&1 1> /dev/null");
   echo "\n";
   if($config['get_latest_submodules']) {
-    echo shell_exec("git submodule foreach git pull origin master");
+    echo shell_exec("git submodule foreach git pull origin master 2>&1 1> /dev/null");
   } else {
-    echo shell_exec("git submodule update");
+    echo shell_exec("git submodule update 2>&1 1> /dev/null");
   }
   // get new submodules, if they've been added in the most recent commit
-  echo shell_exec("git submodule update --init --recursive");
+  echo shell_exec("git submodule update --init --recursive 2>&1 1> /dev/null");
   echo "\n";
 
   // post-deploy hook
