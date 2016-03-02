@@ -51,6 +51,12 @@ if($secret == $config['secret']) {
   // get new submodules, if they've been added in the most recent commit
   echo shell_exec("git submodule update --init --recursive");
   echo "\n";
+
+  // post-deploy hook
+  $hook = "./.post-deploy";
+  if(file_exists($hook)) {
+    echo shell_exec($hook);
+  }
 } else {
   // back out to the main page
   header('Location: ' . $config['redirect_to']);
