@@ -21,7 +21,14 @@ if(file_exists($config_path)) {
   }
 }
 
-if(isset($_GET['secret']) && $_GET['secret'] == $config['secret']) {
+$secret = false;
+if(isset($_GET['secret'])) {
+  $secret = $_GET['secret'];
+} elseif(isset($_POST['secret'])) {
+  $secret = $_POST['secret'];
+}
+
+if($secret == $config['secret']) {
   // work from the project root
   $dir_ok = chdir('..' . $config['path']);
   if(!$dir_ok) {
